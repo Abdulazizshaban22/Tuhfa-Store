@@ -1,0 +1,16 @@
+{
+  "name": "سوار عسيري مطرّز (نموذج بايلوت)",
+  "description": "قطعة توثيق تجريبية — تحفة v4.2.1",
+  "image": "ipfs://<CID>/aseeri_bracelet.png",
+  "attributes": [
+    {
+      "trait_type": "CraftStyle",
+      "value": "Asiri"
+    },
+    {
+      "trait_type": "Origin",
+      "value": "Abha"
+    }
+  ],
+  "checksum_sha256": "00a9926454591f7ab3c959f178f48f0ba4ac66daf01491d2be75886eeae58c3a"
+}

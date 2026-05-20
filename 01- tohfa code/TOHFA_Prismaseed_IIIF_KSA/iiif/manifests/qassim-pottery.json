@@ -1,0 +1,93 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://iiif.tohfa.sa/manifests/qassim-pottery",
+  "type": "Manifest",
+  "label": {
+    "ar": [
+      "متحف القصيم — الفخار التقليدي"
+    ],
+    "en": [
+      "Qassim Museum — Pottery"
+    ]
+  },
+  "summary": {
+    "ar": [
+      "الفخار المحلي: أساليب التشكيل والحرق والزخرفة."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "ar": [
+          "الموقع"
+        ]
+      },
+      "value": {
+        "ar": [
+          "بريدة، السعودية"
+        ]
+      }
+    },
+    {
+      "label": {
+        "ar": [
+          "الترخيص"
+        ]
+      },
+      "value": {
+        "ar": [
+          "CC BY 4.0 (مثال)"
+        ]
+      }
+    }
+  ],
+  "rights": "http://creativecommons.org/licenses/by/4.0/",
+  "thumbnail": [
+    {
+      "id": "https://iiif.tohfa.sa/images/qassim-pottery/full/max/0/default.jpg",
+      "type": "Image",
+      "format": "image/jpeg"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://iiif.tohfa.sa/manifests/qassim-pottery/canvas/1",
+      "type": "Canvas",
+      "height": 3000,
+      "width": 3000,
+      "label": {
+        "ar": [
+          "لوحة 1"
+        ]
+      },
+      "items": [
+        {
+          "id": "https://iiif.tohfa.sa/manifests/qassim-pottery/canvas/1/page/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://iiif.tohfa.sa/manifests/qassim-pottery/canvas/1/page/1/annotation/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://iiif.tohfa.sa/images/qassim-pottery/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "height": 3000,
+                "width": 3000,
+                "service": [
+                  {
+                    "id": "https://iiif.tohfa.sa/images/qassim-pottery",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              },
+              "target": "https://iiif.tohfa.sa/manifests/qassim-pottery/canvas/1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

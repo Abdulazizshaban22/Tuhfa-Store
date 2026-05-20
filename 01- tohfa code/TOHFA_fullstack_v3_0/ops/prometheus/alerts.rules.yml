@@ -1,0 +1,17 @@
+groups:
+- name: http
+  rules:
+  - alert: HighHttp5xxErrorRate
+    expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) > 0.05
+    for: 5m
+    labels: { severity: critical }
+    annotations:
+      summary: "High 5xx error rate (>5% for 5m)"
+      description: "Investigate deploys, DB, upstream dependencies"
+  - alert: HighRequestLatencyP95
+    expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) > 0.5
+    for: 10m
+    labels: { severity: warning }
+    annotations:
+      summary: "P95 latency > 500ms (10m)"
+      description: "Check DB indexes, caches, N+1 queries"

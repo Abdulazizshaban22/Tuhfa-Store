@@ -1,0 +1,9 @@
+
+# After `expo prebuild`, a Podfile will be created under ios/.
+# Add SDKs:
+#   pod 'Firebase/Analytics'
+#   pod 'Firebase/Messaging'
+#   pod 'mixpanel-react-native'
+#   pod 'goSellSDK'            # Tap iOS SDK (via CocoaPods, check Tap docs)
+#   # HyperPay OPPWAMobile often provided as xcframework; add manually if pod not available.
+#   # pod 'OPPWAMobile'        # if available, else add framework manually to your Xcode project.

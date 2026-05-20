@@ -1,0 +1,15 @@
+# Stripe CLI forward example
+# stripe login
+# stripe listen --events checkout.session.completed,payment_intent.succeeded --forward-to http://localhost:3001/webhooks/stripe
+
+# Tap webhook test (HMAC)
+# echo -n '{"event":"CAPTURED","charge":{"id":"ch_123","reference":{"transaction":"tr_123"}}}' > body.json
+# export TAP_WEBHOOK_SECRET=replace_me
+# SIG=$(node -e "const c=require('crypto');const fs=require('fs');const b=fs.readFileSync('body.json');const h=c.createHmac('sha256', process.env.TAP_WEBHOOK_SECRET).update(b).digest('hex');console.log(h)")
+# curl -X POST http://localhost:3001/webhooks/tap-secure -H "tap-signature: $SIG" -H "Content-Type: application/json" --data-binary @body.json
+
+# Create order (Stripe)
+curl -X POST {{API_BASE}}/orders -H "Authorization: Bearer {{JWT}}" -H "Content-Type: application/json" -d '{"items":[{"productId":"{{PRODUCT_ID}}","quantity":1}],"provider":"stripe","returnUrl":"{{WEB_BASE}}/thank-you"}'
+
+# Create order (Tap STC Pay)
+curl -X POST {{API_BASE}}/orders -H "Authorization: Bearer {{JWT}}" -H "Content-Type: application/json" -d '{"items":[{"productId":"{{PRODUCT_ID}}","quantity":1}],"provider":"tap","returnUrl":"{{WEB_BASE}}/thank-you"}'

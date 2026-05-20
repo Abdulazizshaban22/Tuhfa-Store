@@ -1,0 +1,12 @@
+{
+  "name": "tuhfa-kms-bridge",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-kms": "^3.668.0",
+    "express": "^4.19.2"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}

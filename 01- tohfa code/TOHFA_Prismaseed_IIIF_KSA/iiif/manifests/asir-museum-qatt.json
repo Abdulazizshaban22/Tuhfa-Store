@@ -1,0 +1,93 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://iiif.tohfa.sa/manifests/asir-museum-qatt",
+  "type": "Manifest",
+  "label": {
+    "ar": [
+      "متحف عسير — القط العسيري"
+    ],
+    "en": [
+      "Aseer Museum — Al-Qatt Al-Asiri"
+    ]
+  },
+  "summary": {
+    "ar": [
+      "ألوان وزخارف القط العسيري ودوره في الهوية البصرية للمنطقة."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "ar": [
+          "الموقع"
+        ]
+      },
+      "value": {
+        "ar": [
+          "أبها، السعودية"
+        ]
+      }
+    },
+    {
+      "label": {
+        "ar": [
+          "الترخيص"
+        ]
+      },
+      "value": {
+        "ar": [
+          "CC BY 4.0 (مثال)"
+        ]
+      }
+    }
+  ],
+  "rights": "http://creativecommons.org/licenses/by/4.0/",
+  "thumbnail": [
+    {
+      "id": "https://iiif.tohfa.sa/images/asir-museum-qatt/full/max/0/default.jpg",
+      "type": "Image",
+      "format": "image/jpeg"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://iiif.tohfa.sa/manifests/asir-museum-qatt/canvas/1",
+      "type": "Canvas",
+      "height": 3000,
+      "width": 3000,
+      "label": {
+        "ar": [
+          "لوحة 1"
+        ]
+      },
+      "items": [
+        {
+          "id": "https://iiif.tohfa.sa/manifests/asir-museum-qatt/canvas/1/page/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://iiif.tohfa.sa/manifests/asir-museum-qatt/canvas/1/page/1/annotation/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://iiif.tohfa.sa/images/asir-museum-qatt/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "height": 3000,
+                "width": 3000,
+                "service": [
+                  {
+                    "id": "https://iiif.tohfa.sa/images/asir-museum-qatt",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              },
+              "target": "https://iiif.tohfa.sa/manifests/asir-museum-qatt/canvas/1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

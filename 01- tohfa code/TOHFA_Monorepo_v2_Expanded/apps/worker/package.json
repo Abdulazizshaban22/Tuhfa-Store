@@ -1,0 +1,13 @@
+{
+  "name": "worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "axios": "^1.7.7"
+  }
+}

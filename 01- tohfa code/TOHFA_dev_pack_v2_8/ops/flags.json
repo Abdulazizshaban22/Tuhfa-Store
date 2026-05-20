@@ -1,0 +1,7 @@
+{
+  "ui.new_dashboard": true,
+  "capture.webhook_headers": true,
+  "payments.tap": true,
+  "payments.stripe": true,
+  "report.top_pdf": true
+}

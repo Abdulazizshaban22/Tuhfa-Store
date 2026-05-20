@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "VisualArtwork",
+  "name": "سدو نجدي — قطعة متحفية",
+  "creator": {
+    "@type": "Person",
+    "name": "حرفية سُعودية"
+  },
+  "artform": "Textile",
+  "image": "https://images.example.org/iiif/2/asset1/full/full/0/default.jpg",
+  "identifier": "TUHFA-2025-0001"
+}

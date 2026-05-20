@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "TOHFA Payments & SPL",
+    "_postman_id": "tohfa-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Tap - Create Charge (hosted)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TAP_SECRET_KEY}}"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://api.tap.company/v2/charges",
+          "protocol": "https",
+          "host": [
+            "api",
+            "tap",
+            "company"
+          ],
+          "path": [
+            "v2",
+            "charges"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 10,\n  \"currency\": \"SAR\",\n  \"threeDSecure\": true,\n  \"customer_initiated\": true,\n  \"description\": \"Test\",\n  \"source\": {\n    \"id\": \"src_all\"\n  },\n  \"redirect\": {\n    \"url\": \"https://example.com/redirect\"\n  }\n}"
+        }
+      }
+    },
+    {
+      "name": "APS - Quick Start (placeholder)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://paymentservices.amazon.com/docs/"
+        }
+      }
+    },
+    {
+      "name": "SPL - Validate Address (local API)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:4000/spl/validate"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"address\": {\n    \"city\": \"\\u0627\\u0644\\u0631\\u064a\\u0627\\u0636\",\n    \"street\": \"\\u0637\\u0631\\u064a\\u0642 \\u0627\\u0644\\u0645\\u0644\\u0643\",\n    \"building\": \"10\",\n    \"zip\": \"12345\"\n  }\n}"
+        }
+      }
+    }
+  ]
+}

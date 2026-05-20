@@ -1,0 +1,9 @@
+
+{
+  "name": "tuhfa-realtime",
+  "version": "2.1.2",
+  "type": "module",
+  "private": true,
+  "dependencies": { "fastify": "^4.28.1", "fastify-cors": "^8.4.0", "ws": "^8.18.0" },
+  "scripts": { "start": "node server.mjs" }
+}

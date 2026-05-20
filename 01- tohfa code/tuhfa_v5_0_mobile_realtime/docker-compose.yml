@@ -1,0 +1,12 @@
+
+version: "3.9"
+services:
+  realtime:
+    build: ./services/realtime
+    command: ["node","server.mjs"]
+    ports: ["7070:7070","7071:7071"]
+  ai:
+    build:
+      context: ./services/ai
+      dockerfile: Dockerfile
+    ports: ["8089:8080"]

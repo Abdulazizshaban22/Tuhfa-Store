@@ -1,0 +1,14 @@
+{
+  "name": "tohfa-scripts",
+  "version": "3.7.0",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "dotenv": "^16.4.5",
+    "prisma": "^5.19.1"
+  },
+  "scripts": {
+    "seed": "node seed.js",
+    "embed": "node embed.js"
+  }
+}

@@ -1,0 +1,11 @@
+exhibit_id,museum_name_ar,city_ar,title_ar,iiif_manifest_url,description_ar
+E001,مركز ثقافة الطائف,أبها,معرض تراث 1,https://iiif.harvardartmuseums.org/manifests/object/299843,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E002,مركز ثقافة الطائف,نجران,معرض تراث 2,https://iiif.harvardartmuseums.org/manifests/object/304212,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E003,متحف الحِرفة السعودية,جازان,معرض تراث 3,https://iiif.bodleian.ox.ac.uk/iiif/manifest/7c5e6e89-4a6e-4e7e-8d4d-2f0bf0b2e49b.json,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E004,متحف التراث الوطني,أبها,معرض تراث 4,https://iiif.wellcomecollection.org/presentation/b18035723,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E005,بيت جدة التاريخي,نجران,معرض تراث 5,https://api.artic.edu/api/v1/artworks/129884/manifest.json,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E006,متحف الحِرفة السعودية,حائل,معرض تراث 6,https://iiif.lib.ncsu.edu/iiif/ua102_200-001-bx0022-003-037_0001/manifest,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E007,مركز ثقافة الطائف,نجران,معرض تراث 7,https://iiif.digitalcommonwealth.org/iiif/2/commonwealth:df65vj83r/manifest,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E008,مركز ثقافة الطائف,سكاكا,معرض تراث 8,https://media.nga.gov/public/manifest/nga_highlights.json,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E009,متحف التراث الوطني,سكاكا,معرض تراث 9,https://iiif.princeton.edu/loris/pudl0001/4609321/s1/manifest,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.
+E010,بيت جدة التاريخي,جدة,معرض تراث 10,https://iiif.bodleian.ox.ac.uk/iiif/manifest/0d3e4e45-5e0d-4b9e-bc66-6d1b8734e5c2.json,معرض رقمي تفاعلي يربط القطع بالممارسات الحِرفية.

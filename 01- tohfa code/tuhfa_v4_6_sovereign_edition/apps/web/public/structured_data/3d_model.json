@@ -1,0 +1,8 @@
+{
+  "@context": "https://schema.org",
+  "@type": "3DModel",
+  "name": "زخرفة خشبية — نموذج ثلاثي الأبعاد",
+  "encodingFormat": "model/gltf-binary",
+  "contentUrl": "https://tuhfa.app/models/sample.glb",
+  "isBasedOn": "https://tuhfa.app/iiif/sample-manifest.json"
+}

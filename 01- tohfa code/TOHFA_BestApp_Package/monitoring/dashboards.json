@@ -1,0 +1,39 @@
+{
+  "dashboards": [
+    {
+      "name": "Web Core Vitals",
+      "metrics": [
+        "LCP_p75",
+        "CLS_p75",
+        "INP_p75"
+      ]
+    },
+    {
+      "name": "API Health",
+      "metrics": [
+        "req_rate",
+        "error_5xx",
+        "latency_p95",
+        "db_conn_pool"
+      ]
+    },
+    {
+      "name": "Payments",
+      "metrics": [
+        "charges_total",
+        "success_rate",
+        "refunds",
+        "webhook_lag"
+      ]
+    },
+    {
+      "name": "Web3",
+      "metrics": [
+        "mints",
+        "owners",
+        "fail_tx",
+        "chain_latency"
+      ]
+    }
+  ]
+}

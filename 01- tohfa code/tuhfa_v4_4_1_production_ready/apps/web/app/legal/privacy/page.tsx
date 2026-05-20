@@ -1,0 +1,1 @@
+<main style={{padding:24}}><h1>Privacy Policy (PDPL)</h1><p>بيان خصوصية متوافق مع PDPL — عدّل وفق نشاطك.</p></main>

@@ -1,0 +1,104 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+
+model Tenant {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  users     User[]
+  products  Product[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("client")
+  tenantId  String?
+  tenant    Tenant?  @relation(fields: [tenantId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Creator {
+  id        String   @id @default(cuid())
+  name      String
+  bio       String?
+  createdAt DateTime @default(now())
+  products  Product[]
+}
+
+model Product {
+  id         String   @id @default(cuid())
+  name       String
+  priceCents Int
+  currency   String   @default("SAR")
+  creatorId  String?
+  creator    Creator? @relation(fields: [creatorId], references: [id])
+  tenantId   String?
+  tenant     Tenant?  @relation(fields: [tenantId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model Order {
+  id         String    @id @default(cuid())
+  status     String
+  totalCents Int
+  currency   String    @default("SAR")
+  createdAt  DateTime  @default(now())
+  items      OrderItem[]
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  orderId    String
+  order      Order   @relation(fields: [orderId], references: [id])
+  productId  String
+  product    Product @relation(fields: [productId], references: [id])
+  quantity   Int
+  unitCents  Int
+}
+
+model WebhookEvent {
+  id         String   @id @default(cuid())
+  provider   String
+  status     String
+  receivedAt DateTime @default(now())
+  payload    Json
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  at         DateTime @default(now())
+  actor      String?
+  action     String
+  entity     String?
+  details    Json?
+}
+
+model MintRequest {
+  id         String   @id @default(cuid())
+  to         String
+  tokenURI   String
+  standard   String   // ERC721 / ERC1155
+  status     String   @default("queued") // queued, sent, failed
+  createdAt  DateTime @default(now())
+}
+
+model NfcLink {
+  tagHash    String   @id
+  contract   String
+  tokenId    String
+  productId  String?
+  linkedAt   DateTime @default(now())
+}
+
+model PdplRequest {
+  id           String   @id @default(cuid())
+  subjectEmail String
+  type         String   // access | rectify | erase | portability | restrict | withdraw-consent
+  details      Json?
+  status       String   @default("received")
+  note         String?
+  receivedAt   DateTime @default(now())
+  resolvedAt   DateTime?
+}

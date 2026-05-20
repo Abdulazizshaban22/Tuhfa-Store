@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  api:
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/tohfa?schema=public
+      - CORS_ORIGINS=*
+      - DEMO_MODE=1
+
+  web:
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE=http://localhost:3001
+
+  ai:
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2
+
+  db:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  redpanda:
+    # Common single-node dev port for Redpanda
+    ports:
+      - "9092:9092"
+      - "9644:9644"

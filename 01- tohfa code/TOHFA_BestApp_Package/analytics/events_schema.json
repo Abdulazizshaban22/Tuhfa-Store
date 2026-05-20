@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "events": [
+    {
+      "name": "product_view",
+      "props": [
+        "product_id",
+        "artisan_id",
+        "craft",
+        "price_sar",
+        "from"
+      ]
+    },
+    {
+      "name": "add_to_cart",
+      "props": [
+        "product_id",
+        "qty",
+        "price_sar"
+      ]
+    },
+    {
+      "name": "checkout_started",
+      "props": [
+        "cart_value_sar",
+        "items",
+        "payment_method_pref"
+      ]
+    },
+    {
+      "name": "payment_succeeded",
+      "props": [
+        "order_id",
+        "amount_sar",
+        "method",
+        "gateway_tx"
+      ]
+    },
+    {
+      "name": "spl_validated",
+      "props": [
+        "ok",
+        "zip"
+      ]
+    },
+    {
+      "name": "nft_minted",
+      "props": [
+        "product_id",
+        "token_id",
+        "chain_id"
+      ]
+    }
+  ]
+}

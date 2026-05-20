@@ -1,0 +1,1 @@
+<main style={{padding:24}}><h1>Terms & Conditions</h1><p>Merchant terms placeholder.</p></main>

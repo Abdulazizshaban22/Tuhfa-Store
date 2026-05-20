@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Int
+  currency    String   @default("SAR")
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  sellerId    String?
+  seller      Seller?  @relation(fields: [sellerId], references: [id])
+  embeddings  VectorEmbedding?
+}
+
+model Seller {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  role      String   @default("seller")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  products  Product[]
+  offers    Offer[]
+  coupons   Coupon[]
+  bundles   Bundle[]
+}
+
+model Offer {
+  id          String   @id @default(cuid())
+  seller      Seller   @relation(fields: [sellerId], references: [id])
+  sellerId    String
+  title       String
+  description String?
+  discountPct Int      @default(0)
+  active      Boolean  @default(true)
+  startsAt    DateTime @default(now())
+  endsAt      DateTime?
+}
+
+model Coupon {
+  id          String   @id @default(cuid())
+  seller      Seller   @relation(fields: [sellerId], references: [id])
+  sellerId    String
+  code        String   @unique
+  discountPct Int      @default(0)
+  active      Boolean  @default(true)
+  uses        Int      @default(0)
+  maxUses     Int?
+  expiresAt   DateTime?
+}
+
+model BundleItem {
+  id        String  @id @default(cuid())
+  bundle    Bundle  @relation(fields: [bundleId], references: [id])
+  bundleId  String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  qty       Int     @default(1)
+}
+
+model Bundle {
+  id          String       @id @default(cuid())
+  seller      Seller       @relation(fields: [sellerId], references: [id])
+  sellerId    String
+  title       String
+  description String?
+  price       Int
+  currency    String       @default("SAR")
+  items       BundleItem[]
+}
+
+model Payment {
+  id           String   @id @default(cuid())
+  provider     String
+  status       String   @default("created")
+  amount       Int
+  currency     String   @default("SAR")
+  orderId      String
+  returnUrl    String?
+  providerRef  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model NfcLink {
+  id          String   @id @default(cuid())
+  uidHash     String   @unique
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   String
+  tokenLink   String?  // could be tokenURI or certificate URL
+  createdAt   DateTime @default(now())
+}
+
+model Web3Mint {
+  id           String   @id @default(cuid())
+  product      Product  @relation(fields: [productId], references: [id])
+  productId    String
+  toAddress    String
+  txHash       String?
+  tokenId      String?
+  tokenURI     String?
+  createdAt    DateTime @default(now())
+}
+
+/// Vector embeddings for semantic search
+model VectorEmbedding {
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   String   @id
+  vector      Vector
+}
+
+/// pgvector type
+type Vector @db.Vector

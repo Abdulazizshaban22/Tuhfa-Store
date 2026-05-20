@@ -1,0 +1,64 @@
+// Append to prisma/schema.prisma
+
+enum Role {
+  admin
+  craftsman
+  customer
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      Role     @default(customer)
+  createdAt DateTime @default(now())
+  orders    Order[]
+  products  Product[] @relation("CraftsmanProducts")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  priceCents  Int
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  craftsmanId String?
+  craftsman   User?    @relation("CraftsmanProducts", fields: [craftsmanId], references: [id])
+  // Embedding kept in a separate table for pgvector usage
+  embedding   ProductEmbedding?
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  userId          String?
+  user            User?       @relation(fields: [userId], references: [id])
+  status          String
+  totalCents      Int
+  currency        String       @default("SAR")
+  paymentProvider String?
+  paymentRef      String?
+  createdAt       DateTime     @default(now())
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  orderId    String
+  order      Order   @relation(fields: [orderId], references: [id])
+  productId  String
+  product    Product @relation(fields: [productId], references: [id])
+  quantity   Int
+  priceCents Int
+}
+
+// pgvector table (managed via raw SQL migration)
+model ProductEmbedding {
+  productId String   @id
+  product   Product  @relation(fields: [productId], references: [id])
+  // Use a float[] proxy; actual vector column created via SQL migration and accessed via raw queries
+  // prisma does not (yet) natively support vector in all channels, see docs.
+  embedding Float[]
+}

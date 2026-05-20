@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tohfa
+    ports: [ "5432:5432" ]
+  redis:
+    image: redis:7-alpine
+    ports: [ "6379:6379" ]
+  redpanda:
+    image: redpanda/redpanda:v24.1.10
+    command: ["redpanda", "start", "--overprovisioned", "--smp", "1", "--memory", "1G", "--reserve-memory", "0M", "--check=false"]
+    ports: [ "9092:9092" ]
+  api:
+    build: ../apps/api
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/tohfa
+      CORS_ORIGINS: http://localhost:3000
+      DEMO_MODE: "true"
+    depends_on: [ db ]
+    ports: [ "4000:4000" ]
+  ai:
+    build: ../apps/ai
+    command: bash -lc "pip install -r requirements.txt && uvicorn app:app --host 0.0.0.0 --port 5000"
+    ports: [ "5000:5000" ]
+  web:
+    build: ../apps/web
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:4000
+    ports: [ "3000:3000" ]

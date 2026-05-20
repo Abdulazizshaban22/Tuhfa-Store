@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Tuhfa",
+    "slug": "tuhfa",
+    "version": "4.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "tuhfa",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0A0E"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tuhfa.app",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "Used for analytics and personalized content.",
+        "NFCReaderUsageDescription": "Used to read and write NFC tags for provenance (Scan-to-Own)."
+      },
+      "entitlements": {
+        "com.apple.developer.nfc.readersession.formats": [
+          "NDEF"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.tuhfa.app",
+      "permissions": [
+        "android.permission.NFC"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#0A0A0E"
+      }
+    },
+    "plugins": [
+      [
+        "react-native-nfc-manager",
+        {
+          "nfcPermission": "Used to scan and write NFC tags for provenance (Scan-to-Own)."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "00000000-0000-0000-0000-000000000000"
+      },
+      "apiBaseUrl": "https://your-api.tuhfa.app",
+      "walletConnectProjectId": "YOUR_WALLETCONNECT_PROJECT_ID"
+    }
+  }
+}

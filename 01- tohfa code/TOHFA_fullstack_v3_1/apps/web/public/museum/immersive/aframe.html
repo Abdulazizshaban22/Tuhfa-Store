@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>تحفة — متحف ثلاثي الأبعاد (تجريبي)</title>
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<style>body{margin:0} .ui{position:fixed;top:10px;left:10px;background:#fff8;padding:8px;border-radius:8px;font-family:sans-serif}</style>
+</head>
+<body>
+<div class="ui">انقر على اللوحة لشراء نسخة مرخّصة (طلب سريع)</div>
+<a-scene>
+  <a-sky color="#ECECEC"></a-sky>
+
+  <a-entity id="frame" geometry="primitive: box; depth: 0.05; height: 1; width: 1.5" position="0 1.5 -3" material="color: #222"></a-entity>
+  <a-entity id="label" text="value: لوحة حرفية — SAR 250; color: #fff" position="-0.65 1.5 -2.94"></a-entity>
+
+  <a-entity position="0 1.6 0">
+    <a-camera wasd-controls-enabled="true" look-controls="true" cursor="rayOrigin: mouse"></a-camera>
+  </a-entity>
+</a-scene>
+
+<script>
+  const API = (location.origin.replace(/:\d+$/, '') || '') + '/api';
+  const productId = 'demo-product-1';
+  document.querySelector('#frame').addEventListener('click', async ()=>{
+    try {
+      const url = (window.NEXT_PUBLIC_API_BASE || API) + '/orders/quick-buy?productId=' + encodeURIComponent(productId);
+      const res = await fetch(url, { method: 'POST' });
+      const j = await res.json();
+      alert('تم إنشاء طلب #' + (j?.id || '؟') + ' — راجع لوحة الطلبات');
+    } catch (e) {
+      alert('تعذّر الشراء السريع: ' + e);
+    }
+  });
+</script>
+</body></html>

@@ -1,0 +1,10 @@
+{
+  "name": "tohfa-fullstack",
+  "version": "3.5.0",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "tools"
+  ]
+}

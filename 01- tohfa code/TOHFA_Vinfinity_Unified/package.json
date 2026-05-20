@@ -1,0 +1,10 @@
+{
+  "name": "tohfa-unified",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev:api": "pnpm --filter api dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:ai": "pnpm --filter ai dev"
+  }
+}

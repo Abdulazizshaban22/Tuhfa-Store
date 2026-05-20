@@ -1,0 +1,12 @@
+{
+  "name": "c2pa-sign",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sign": "node sign.js"
+  },
+  "dependencies": {
+    "c2pa": "^0.12.0",
+    "mime": "^4.0.4"
+  }
+}

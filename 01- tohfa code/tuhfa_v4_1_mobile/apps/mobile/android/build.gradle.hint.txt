@@ -1,0 +1,8 @@
+
+// Top-level build.gradle (placeholder; will be generated after `expo prebuild`)
+// Ensure you add the Google services classpath in dependencies:
+// buildscript {
+//   dependencies {
+//     classpath('com.google.gms:google-services:4.4.2')
+//   }
+// }

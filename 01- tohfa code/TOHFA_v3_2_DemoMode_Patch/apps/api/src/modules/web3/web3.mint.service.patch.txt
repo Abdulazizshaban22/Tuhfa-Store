@@ -1,0 +1,15 @@
+--- Add at top ---
+import { isDemo } from '../../demo/demo.util';
+
+--- Wrap mintForProduct ---
+if (isDemo()) {
+  const product = await prisma.product.findUnique({ where:{ externalId } });
+  if (!product) throw new Error("Product not found");
+  const tokenId = `DEMO-${Date.now()}`;
+  const cert = await prisma.nftCertificate.upsert({
+    where:{ productId: product.id },
+    create:{ productId: product.id, tokenId, ownerAddress: to, chainId: 0, contractAddress: 'DEMO', metadataUrl:`demo://${externalId}` },
+    update:{ tokenId, ownerAddress: to, chainId: 0, contractAddress: 'DEMO', metadataUrl:`demo://${externalId}` }
+  });
+  return { ok:true, tokenId, contract:'DEMO', chainId:0, tokenURI: cert.metadataUrl };
+}

@@ -1,0 +1,15 @@
+variable "project" { type = string }
+variable "env" { type = string }
+variable "cluster_arn" { type = string }
+variable "alb_listener_arn" { type = string }
+variable "private_subnets" { type = list(string) }
+variable "security_groups" { type = list(string) }
+variable "rds_endpoint" { type = string }
+variable "db_username" { type = string }
+variable "db_password" { type = string }
+variable "container_cpu" { type = number }
+variable "container_memory" { type = number }
+variable "desired_count_api" { type = number }
+variable "desired_count_web" { type = number }
+variable "desired_count_ai" { type = number }
+variable "ecr_urls" { type = map(string) }

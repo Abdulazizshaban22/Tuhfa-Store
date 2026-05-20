@@ -1,0 +1,1 @@
+ضع صور TIFF/JPEG هنا. مثال الوصول: http://localhost:8182/iiif/2/<اسم_الصورة>.tif/info.json

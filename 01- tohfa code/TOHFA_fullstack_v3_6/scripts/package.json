@@ -1,0 +1,11 @@
+
+{
+  "name": "@tohfa/scripts",
+  "version": "3.6.0",
+  "type": "module",
+  "dependencies": { "dotenv": "^16.4.5", "node-fetch": "^3.3.2", "pg": "^8.12.0" },
+  "scripts": {
+    "seed": "node seed.mjs",
+    "embed": "node embed.mjs"
+  }
+}

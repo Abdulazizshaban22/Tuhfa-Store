@@ -1,0 +1,58 @@
+version: '3.9'
+services:
+  db:
+    image: ankane/pgvector:latest
+    environment:
+      POSTGRES_DB: tohfa
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/tohfa
+      PORT: 3001
+      ETH_RPC: ${ETH_RPC}
+      TOHFA_ERC721: ${TOHFA_ERC721}
+      OWNER_PK: ${OWNER_PK}
+    depends_on: [db]
+    ports: ["3001:3001"]
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:3001
+    depends_on: [api]
+    ports: ["3000:3000"]
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./ops/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./ops/prometheus/alerts.rules.yml:/etc/prometheus/alerts.rules.yml
+    ports: ["9090:9090"]
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    volumes:
+      - ./ops/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./ops/alertmanager/templates:/etc/alertmanager/templates
+    ports: ["9093:9093"]
+
+  grafana:
+    image: grafana/grafana:latest
+    ports: ["3005:3000"]
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-image-renderer
+    volumes:
+      - ./ops/grafana/provisioning:/etc/grafana/provisioning

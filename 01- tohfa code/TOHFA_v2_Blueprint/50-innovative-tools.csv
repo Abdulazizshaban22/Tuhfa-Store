@@ -1,0 +1,51 @@
+#,Tool,Category,What it does
+1,Smart Catalog & Filters,Marketplace,Faceted & cultural filters (region/material/pattern) with Arabic RTL UX
+2,Custom Order Configurator,Marketplace,Made-to-order form builder with attachments and approvals
+3,Dynamic Bundles & Kits,Marketplace,Combine related crafts into curated sets with discounts
+4,Artisan Storefront Builder,Marketplace,No-code storefront for artisans with themes & Arabic typography
+5,Price Guidance AI,Marketplace,AI suggests price range from comps & material/time inputs
+6,Cross‑sell/Upsell Engine,Marketplace,"Suggest add‑ons (care kits, frames) at cart/checkout"
+7,Gift Registry & Corporate Gifting,Marketplace,Registry for events + bulk corporate orders
+8,Returns/Repairs Flow,Marketplace,RMA + repair requests routed to artisan with SLAs
+9,Subscriptions/Boxes,Marketplace,Monthly themed craft boxes; recurring billing
+10,B2B Quotes (RFQ),Marketplace,Bulk/wholesale requests with negotiation chat
+11,IIIF Manifest Builder,Museum,Build/validate IIIF Presentation manifests from assets
+12,360/AR Scene Editor,Museum,"Hotspots, narration, guided tours; export to web"
+13,Curatorial Playlists,Museum,Sequence exhibits into themed tours
+14,Exhibit Scheduler,Museum,Calendar + publish windows for digital/physical shows
+15,QR Label Generator,Museum,Print-ready QR/NFC labels linked to Tohfa Passport
+16,Provenance Tracer (C2PA),Museum,Stamp and verify content credentials on images/videos
+17,Educational Kits,Museum,Lesson plans & activity packs for schools
+18,Virtual Docent,Museum,Voice/Chat guide through exhibits (Arabic-first)
+19,Visual Similarity Search,AI,Image embeddings + pgvector to find similar crafts
+20,Authenticity Hints,AI,Signals from material/technique/linework to hint originality
+21,Style Explorer,AI,Compare styles/patterns (sadu/qatt/roshan) interactively
+22,Auto Tagging & Captions,AI,Arabic/English tags/captions from images
+23,Recommender v1,AI,Item-to-item + user-to-item collaborative recommendations
+24,Demand Forecasting,AI,SKU/region demand predictions for artisans
+25,Anomaly & Fraud Monitor,AI,Detect counterfeit/stock anomalies/behavior flags
+26,Moderation Assistant,AI,Policy-aware content checks (imagery/text)
+27,Search Intent Router,AI,Understands user goal (learn/buy/book) and routes UI
+28,Price Elasticity Sandbox,AI,Simulate price changes impact using historical data
+29,QR/NFC Passport,IoT,Per-item QR/NFC linking museum labels to product pages
+30,Workshop Telemetry,IoT,Optional sensors (temp/humidity) for pottery/weaving demos
+31,BLE Visitor Heatmaps,IoT,Anonymous footfall & dwell time in galleries
+32,NFC Attendance,IoT,Tap‑in for workshop check‑ins & certificates
+33,Smart Label Printer,IoT,Cloud print for QR/NFC labels from admin
+34,Payment Orchestrator,Commerce,"Tap/APS switch with Apple Pay + mada, fallback logic"
+35,Installments & Wallets,Commerce,Integrate Tabby/STC Pay/UrPay as available
+36,SPL Address Lookup,Logistics,Validate/standardize addresses via National Address API
+37,Shipping Rate Engine,Logistics,Aramex/SPL rates + label generation
+38,ZATCA Invoices,Compliance,Structured e‑invoices & QR for KSA tax compliance
+39,PDPL Consent Ledger,Compliance,Consent records + subject access + deletion
+40,72h Breach Workflow,Compliance,Incident playbook & notifier to SDAIA
+41,C2PA Stamp Pipeline,Compliance,Batch stamp assets with content credentials
+42,Mentor Match,Community,Pair novice artisans with master artisans
+43,Scholarships/Grants,Community,Micro-grants module tied to KPIs
+44,Schools Program,Education,Classroom kits + booking museum visits
+45,Festival/Events Hub,Community,Seasonal campaigns (Year of Handicrafts 2025+)
+46,CSR & Museum Partners,Partnerships,Co‑branded galleries for institutions
+47,Sales & Cohort Dashboard,Analytics,"Cohorts, LTV, CAC, region split"
+48,Visitor Journeys,Analytics,Path analysis across museum → store
+49,A/B Experimentation,Analytics,Flags + experiments for UX/pricing
+50,SRE/Observability Pack,Ops,"Metrics, logs, traces, uptime & alerting"

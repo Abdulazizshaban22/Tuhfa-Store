@@ -1,0 +1,84 @@
+{
+  "apple": {
+    "appName": {
+      "default": "Tuhfa",
+      "localizations": {
+        "ar-SA": "تحفة"
+      }
+    },
+    "subtitle": {
+      "default": "Crafts & Museum Shops",
+      "localizations": {
+        "ar-SA": "حِرف أصيلة ومتاجر متاحف"
+      }
+    },
+    "promotionalText": {
+      "default": "Shop authentic crafts and 3D museum tours with local payments & provenance.",
+      "localizations": {
+        "ar-SA": "تسوّق حِرفًا أصيلة وجولات 3D للمتحف مع دفع محلي وشهادة أصالة رقمية."
+      }
+    },
+    "description": {
+      "default": "Tuhfa — The Crafts & Museums marketplace.\n• Discover curated pieces with rich stories.\n• Premium store with local payments (Mada/Apple Pay) & reliable shipping.\n• Scan‑to‑Own: tie the piece to NFC and an on‑chain ownership certificate.\n• Digital museums & 3D tours with in‑scene purchase.\n• Cultural AI recommends “similar pieces” and understands visual styles.\n• Vendor/Museum console: inventory, promos, coupons, corporate gifting.\nPrivacy: https://tuhfa.app/privacy\nTerms & Refunds: https://tuhfa.app/terms",
+      "localizations": {
+        "ar-SA": "تحفة — سوق الحِرف والمتاحف.\n• استكشف قطَعًا مُنتقاة وقصصها المصوّرة.\n• متجر فخم بدفع محلي (مدى/Apple Pay) وشحن موثوق.\n• Scan‑to‑Own: اربط القطعة ببطاقة NFC وشهادة ملكية رقمية.\n• متاحف رقمية وجولات 3D مع شراء مباشر داخل المشهد.\n• ذكاء ثقافي يقترح «قطعًا مشابهة» ويفهم أنماط الصور.\n• لوحة للبائعين والمتاحف: مخزون، عروض، أكواد خصم، هدايا مؤسسية.\nسياسة الخصوصية: https://tuhfa.app/privacy\nالشروط والاسترجاع: https://tuhfa.app/terms"
+      }
+    },
+    "keywords": {
+      "default": "crafts,handmade,museum,heritage,design,gifts,artisan,saudi,provenance,NFC,AR,3D"
+    },
+    "primaryCategory": "SHOPPING",
+    "secondaryCategory": "LIFESTYLE",
+    "privacyPolicyUrl": "https://tuhfa.app/privacy",
+    "licensing": {
+      "EULA": "https://tuhfa.app/eula"
+    },
+    "screenshots": {
+      "iphone67": [
+        "ios/screenshots/iphone-6.9/iphone-6.9-01.png",
+        "ios/screenshots/iphone-6.9/iphone-6.9-02.png",
+        "ios/screenshots/iphone-6.9/iphone-6.9-03.png",
+        "ios/screenshots/iphone-6.9/iphone-6.9-04.png",
+        "ios/screenshots/iphone-6.9/iphone-6.9-05.png",
+        "ios/screenshots/iphone-6.9/iphone-6.9-06.png"
+      ],
+      "ipadPro3Gen129": [
+        "ios/screenshots/ipad-13/ipad-13-01.png"
+      ]
+    }
+  },
+  "google": {
+    "title": {
+      "default": "Tuhfa — Crafts & Museums",
+      "localizations": {
+        "ar-SA": "تحفة — سوق الحِرف والمتاحف"
+      }
+    },
+    "shortDescription": {
+      "default": "Shop authentic crafts with 3D museum tours & provenance.",
+      "localizations": {
+        "ar-SA": "تسوّق حِرفًا أصيلة وجولات 3D وشهادة أصالة."
+      }
+    },
+    "fullDescription": {
+      "default": "Tuhfa — The Crafts & Museums marketplace.\n• Discover curated pieces with rich stories.\n• Premium store with local payments (Mada/Apple Pay) & reliable shipping.\n• Scan‑to‑Own: tie the piece to NFC and an on‑chain ownership certificate.\n• Digital museums & 3D tours with in‑scene purchase.\n• Cultural AI recommends “similar pieces” and understands visual styles.\n• Vendor/Museum console: inventory, promos, coupons, corporate gifting.\nPrivacy: https://tuhfa.app/privacy\nTerms & Refunds: https://tuhfa.app/terms",
+      "localizations": {
+        "ar-SA": "تحفة — سوق الحِرف والمتاحف.\n• استكشف قطَعًا مُنتقاة وقصصها المصوّرة.\n• متجر فخم بدفع محلي (مدى/Apple Pay) وشحن موثوق.\n• Scan‑to‑Own: اربط القطعة ببطاقة NFC وشهادة ملكية رقمية.\n• متاحف رقمية وجولات 3D مع شراء مباشر داخل المشهد.\n• ذكاء ثقافي يقترح «قطعًا مشابهة» ويفهم أنماط الصور.\n• لوحة للبائعين والمتاحف: مخزون، عروض، أكواد خصم، هدايا مؤسسية.\nسياسة الخصوصية: https://tuhfa.app/privacy\nالشروط والاسترجاع: https://tuhfa.app/terms"
+      }
+    },
+    "privacyPolicyUrl": "https://tuhfa.app/privacy",
+    "graphicAssets": {
+      "icon": "android/play-icon-512.png",
+      "featureGraphic": "android/feature-graphic-1024x500.png",
+      "phoneScreenshots": [
+        "android/screenshots/phone-1080x1920/phone-1080x1920-01.png",
+        "android/screenshots/phone-1080x1920/phone-1080x1920-02.png",
+        "android/screenshots/phone-1080x1920/phone-1080x1920-03.png",
+        "android/screenshots/phone-1080x1920/phone-1080x1920-04.png",
+        "android/screenshots/phone-1080x1920/phone-1080x1920-05.png",
+        "android/screenshots/phone-1080x1920/phone-1080x1920-06.png"
+      ]
+    },
+    "category": "SHOPPING"
+  }
+}

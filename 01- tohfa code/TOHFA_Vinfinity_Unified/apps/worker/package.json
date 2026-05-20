@@ -1,0 +1,13 @@
+{
+  "name": "worker",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "bullmq": "^5.10.0",
+    "ioredis": "^5.4.1",
+    "dotenv": "^16.4.5"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}

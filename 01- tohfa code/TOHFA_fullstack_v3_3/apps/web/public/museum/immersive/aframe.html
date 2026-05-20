@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>تحفة — متحف ثلاثي الأبعاد (v3.3)</title>
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<style>
+  body{margin:0}
+  .ui{position:fixed;top:10px;left:10px;background:#fff8;padding:8px;border-radius:8px;font-family:sans-serif}
+  .shop{position:fixed;bottom:10px;left:10px;right:10px;background:#fff8;padding:10px;border-radius:10px;display:flex;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+<div class="ui">انقر على العمل أو استخدم الشريط السفلي لشراء سريع أو توقيع شراء بمحفظتك</div>
+<div class="shop">
+  <label>الكمية</label>
+  <input id="qty" type="number" value="1" min="1" style="width:70px"/>
+  <button onclick="addToCart()">إضافة للسلة</button>
+  <button onclick="quickBuy()">شراء سريع</button>
+  <button onclick="signPurchase()">توقيع شراء (EIP‑712)</button>
+  <span id="msg" style="margin-inline-start:10px;color:#333"></span>
+</div>
+<a-scene>
+  <a-sky color="#ECECEC"></a-sky>
+
+  <!-- إطار لوحة -->
+  <a-entity id="frame" geometry="primitive: box; depth: 0.05; height: 1; width: 1.5" position="0 1.5 -3" material="color: #222"></a-entity>
+  <a-entity id="label" text="value: لوحة حرفية — SAR 250; color: #fff" position="-0.65 1.5 -2.94"></a-entity>
+
+  <!-- نموذج glTF تجريبي (ضع ملفك في /public/museum/models/vase.glb) -->
+  <a-entity id="vase" gltf-model="/museum/models/vase.glb" position="1 0.8 -2.5" scale="0.6 0.6 0.6"></a-entity>
+
+  <a-entity position="0 1.6 0">
+    <a-camera wasd-controls-enabled="true" look-controls="true" cursor="rayOrigin: mouse"></a-camera>
+  </a-entity>
+</a-scene>
+
+<script>
+  const API = (location.origin.replace(/:\d+$/, '') || '') + '/api';
+  const productId = 'demo-product-1';
+
+  document.querySelector('#frame').addEventListener('click', ()=> quickBuy());
+  document.querySelector('#vase')?.addEventListener('click', ()=> quickBuy());
+
+  async function quickBuy() {
+    const qty = Math.max(1, parseInt(document.getElementById('qty').value || '1', 10));
+    try {
+      const res = await fetch(API + '/orders/quick-buy?productId=' + encodeURIComponent(productId) + '&qty=' + qty, { method: 'POST' });
+      const j = await res.json();
+      document.getElementById('msg').textContent = 'تم إنشاء طلب #' + (j?.id || '؟');
+    } catch (e) {
+      document.getElementById('msg').textContent = 'تعذّر الشراء السريع';
+    }
+  }
+
+  async function signPurchase() {
+    const qty = Math.max(1, parseInt(document.getElementById('qty').value || '1', 10));
+    if (!window.ethereum) { alert('لا توجد محفظة'); return; }
+    try {
+      // Ask server for typed data
+      const td = await (await fetch(API + '/admin/web3/eip712/purchase-typed-data', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ productId, qty, chainId: 1 })
+      })).json();
+
+      const from = (await window.ethereum.request({ method:'eth_requestAccounts' }))[0];
+      const signature = await window.ethereum.request({ method: 'eth_signTypedData_v4', params: [from, JSON.stringify(td)] });
+
+      const verified = await (await fetch(API + '/admin/web3/eip712/verify-purchase', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ signature, typedData: td, intentId: td.intentId })
+      })).json();
+
+      document.getElementById('msg').textContent = verified?.ok ? ('تم توقيع الطلب #' + verified.orderId) : 'فشل التحقق';
+    } catch (e) {
+      console.error(e);
+      document.getElementById('msg').textContent = 'تعذّر توقيع الشراء';
+    }
+  }
+
+  function addToCart(){ document.getElementById('msg').textContent = 'أُضيفت للسلة (تخيلية)'; }
+</script>
+</body></html>

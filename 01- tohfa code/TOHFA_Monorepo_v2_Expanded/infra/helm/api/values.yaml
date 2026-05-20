@@ -1,0 +1,9 @@
+image:
+  repository: <your-ecr>/tohfa-api
+  tag: latest
+env:
+  DATABASE_URL: postgresql://postgres:postgres@db:5432/tohfa?schema=public
+  PORT: "4000"
+service:
+  type: ClusterIP
+  port: 4000

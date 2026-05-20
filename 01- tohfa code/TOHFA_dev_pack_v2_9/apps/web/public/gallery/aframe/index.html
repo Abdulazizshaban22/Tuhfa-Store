@@ -1,0 +1,27 @@
+<!-- apps/web/public/gallery/aframe/index.html -->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>تحفة — معرض ثلاثي الأبعاد (A‑Frame)</title>
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<style>body{margin:0} .ui{position:fixed;top:10px;left:10px;background:#fff8;padding:8px;border-radius:8px;font-family:sans-serif}</style>
+</head>
+<body>
+<div class="ui">حرّك بالفأرة/اللمس — جرّب نظارة VR المتوافقة (WebXR)</div>
+<a-scene>
+  <a-sky color="#ECECEC"></a-sky>
+  <a-entity position="0 1.5 -3">
+    <a-box depth="0.1" height="1" width="1.5" color="#222"></a-box>
+    <a-text value="لوحة تحفة" color="#fff" position="-0.65 0 0.06"></a-text>
+  </a-entity>
+  <a-entity gltf-model="#artifact" position="0 0 -2" rotation="0 45 0"></a-entity>
+  <a-entity position="0 1.6 0">
+    <a-camera wasd-controls-enabled="true" look-controls="true"></a-camera>
+  </a-entity>
+  <a-assets>
+    <a-asset-item id="artifact" src="/models/Duck.gltf"></a-asset-item>
+  </a-assets>
+</a-scene>
+</body></html>

@@ -1,0 +1,11 @@
+{
+  "name": "wallet-gen",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gen": "node gen.js"
+  },
+  "dependencies": {
+    "ethers": "^6.12.1"
+  }
+}

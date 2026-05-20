@@ -1,0 +1,1 @@
+<main style={{padding:24}}><h1>Refund Policy</h1><p>Refunds within 7 days subject to inspection (placeholder).</p></main>

@@ -1,0 +1,1 @@
+<main style={{padding:24}}><h1>تحفة v6.2 — Close All Gaps</h1><p>نسخة إنتاجية تشمل المحافظ، الدفع، السلسلة، PDPL، XMP، والذكاء الثقافي.</p></main>

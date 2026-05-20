@@ -1,0 +1,17 @@
+{
+  "name": "tuhfa-mobile",
+  "version": "4.3.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "build:dev": "eas build --profile development --platform all",
+    "build:prod": "eas build --profile production --platform all"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
+}

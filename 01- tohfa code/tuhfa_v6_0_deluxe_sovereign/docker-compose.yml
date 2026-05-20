@@ -1,0 +1,20 @@
+
+version: "3.9"
+services:
+  db:
+    image: ankane/pgvector:latest
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tuhfa
+    ports: ["5432:5432"]
+    volumes:
+      - ./services/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  realtime:
+    build: ./services/realtime
+    command: ["node","server.mjs"]
+    ports: ["7070:7070","7071:7071"]
+    depends_on: [db]
+  ai:
+    build: ./services/ai
+    ports: ["8089:8080"]
+    depends_on: [db]

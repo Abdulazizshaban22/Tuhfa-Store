@@ -1,0 +1,220 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+
+enum ProductStatus { READY MADE_TO_ORDER MUSEUM_GRADE }
+enum HostType { ARTISAN MUSEUM }
+enum AppRole { CLIENT ARTISAN ADMIN }
+enum OrderStatus { PENDING PAID FAILED FULFILLED REFUNDED }
+
+model Region {
+  code String @id
+  nameAr String
+  capitalAr String
+  artisans Artisan[]
+  craftTypes CraftType[] @relation("RegionCraftType")
+}
+
+model CraftType {
+  code String @id
+  nameAr String
+  regionPrimaryCode String?
+  regionPrimary Region? @relation(fields:[regionPrimaryCode], references:[code])
+  descriptionAr String?
+  patterns String[]
+  materials String[]
+  products Product[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  name      String?
+  image     String?
+  role      AppRole  @default(CLIENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  accounts  Account[]
+  sessions  Session[]
+  artisan   Artisan?
+  orders    Order[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
+}
+
+model Artisan {
+  id Int @id @default(autoincrement())
+  externalId String @unique
+  nameAr String
+  regionCode String?
+  region Region? @relation(fields: [regionCode], references: [code])
+  specialties String[]
+  storeHandle String @unique
+  instagram String?
+  bioAr String?
+  ownerId String?
+  owner   User?   @relation(fields: [ownerId], references: [id])
+  products Product[]
+  workshops Workshop[]
+}
+
+model Exhibit {
+  id Int @id @default(autoincrement())
+  externalId String @unique
+  museumNameAr String
+  cityAr String
+  titleAr String
+  iiifManifestUrl String
+  descriptionAr String?
+  products Product[]
+  workshops Workshop[]
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  externalId String @unique
+  sku String? @unique
+  titleAr String
+  status ProductStatus
+  priceSar Int
+  stockQty Int @default(0)
+  madeToOrderLeadDays Int?
+  images String[]
+  craftTypeCode String
+  craftType CraftType @relation(fields: [craftTypeCode], references: [code])
+  artisanId Int?
+  artisan Artisan? @relation(fields: [artisanId], references: [id])
+  museumExhibitId Int?
+  museumExhibit Exhibit? @relation(fields: [museumExhibitId], references: [id])
+  passport Passport?
+  embedding Unsupported("vector")?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  nftCert   NftCertificate?
+  iiifItems IiifItem[]
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  userId String?
+  user   User? @relation(fields:[userId], references:[id])
+  totalSar Int
+  status OrderStatus @default(PENDING)
+  items OrderItem[]
+  paymentRef String?
+  addressJson Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OrderItem {
+  id Int @id @default(autoincrement())
+  orderId Int
+  order   Order @relation(fields:[orderId], references:[id], onDelete: Cascade)
+  productId Int
+  product Product @relation(fields:[productId], references:[id])
+  qty Int @default(1)
+  priceSar Int
+}
+
+model Workshop {
+  id Int @id @default(autoincrement())
+  externalId String @unique
+  hostType HostType
+  craftTypeCode String
+  craftType CraftType @relation(fields: [craftTypeCode], references: [code])
+  titleAr String
+  dateStart DateTime
+  durationHours Int @default(2)
+  priceSar Int @default(0)
+  capacity Int @default(10)
+  venueAr String?
+  online Boolean @default(false)
+  artisanId Int?
+  artisan Artisan? @relation(fields: [artisanId], references: [id])
+  exhibitId Int?
+  exhibit Exhibit? @relation(fields: [exhibitId], references: [id])
+}
+
+model Passport {
+  id Int @id @default(autoincrement())
+  externalId String @unique
+  productId Int @unique
+  product Product @relation(fields: [productId], references: [id])
+  qrText String
+  nfcTagUid String?
+  c2paRef String?
+}
+
+model IiifItem {
+  id Int @id @default(autoincrement())
+  productId Int
+  product Product @relation(fields:[productId], references:[id])
+  label String
+  imageUrl String
+  width Int?
+  height Int?
+  orderIndex Int @default(0)
+}
+
+model Gs1Map {
+  id Int @id @default(autoincrement())
+  gtin String @unique
+  productId Int
+  product Product @relation(fields:[productId], references:[id])
+}
+
+model NftCertificate {
+  id Int @id @default(autoincrement())
+  productId Int @unique
+  product Product @relation(fields:[productId], references:[id])
+  tokenId String?
+  contractAddress String?
+  chainId Int?
+  metadataUrl String?
+  ownerAddress String?
+  txHash String?
+  createdAt DateTime @default(now())
+}
+
+model PdplIncident {
+  id Int @id @default(autoincrement())
+  title String
+  severity String
+  occurredAt DateTime
+  detectedAt DateTime
+  reportedToSdaia Boolean @default(false)
+  details Json?
+  createdAt DateTime @default(now())
+}

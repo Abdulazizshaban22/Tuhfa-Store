@@ -1,0 +1,23 @@
+{
+  "name": "tuhfa-provenance-chain",
+  "version": "4.2.0",
+  "private": true,
+  "scripts": {
+    "build": "hardhat compile",
+    "deploy:amoy": "hardhat run scripts/deploy.ts --network amoy",
+    "mint:amoy": "hardhat run scripts/mint.ts --network amoy",
+    "verify:amoy": "hardhat verify --network amoy $CONTRACT_ADDRESS",
+    "test": "hardhat test"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^18.19.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "ethers": "^6.10.0",
+    "@openzeppelin/contracts": "^5.0.1"
+  }
+}

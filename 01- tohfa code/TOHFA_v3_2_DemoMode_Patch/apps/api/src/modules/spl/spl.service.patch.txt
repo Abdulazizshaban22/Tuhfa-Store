@@ -1,0 +1,8 @@
+--- Add at top ---
+import { isDemo } from '../../demo/demo.util';
+
+--- Modify validateAddress ---
+if (isDemo()) {
+  const ok = !!(addr?.Buildingnumber && String(addr?.Zipcode||'').match(/^\d{5}$/));
+  return { ok, data: { Addressfound: ok, demo:true } };
+}

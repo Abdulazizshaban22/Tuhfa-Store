@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "سوار عسيري مطرّز — بايلوت",
+  "identifier": "token:0xABC123/412",
+  "creator": "Aseeri Artisans",
+  "provenance": {
+    "mintedBy": "TuhfaNFT",
+    "blockchain": "Polygon Amoy (80002)",
+    "checksum": "SHA256:__FILL__",
+    "nfcTag": "04:A2:B4:EE"
+  }
+}

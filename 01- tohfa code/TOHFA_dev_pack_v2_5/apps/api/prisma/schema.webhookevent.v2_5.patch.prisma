@@ -1,0 +1,25 @@
+// Extend WebhookEvent in prisma/schema.prisma
+
+model WebhookEvent {
+  id            String   @id @default(cuid())
+  provider      WebhookProvider
+  type          String
+  deliveryId    String?  @unique
+  signature     String?
+  status        String   @default("received") // received | processing | processed | failed
+  attemptCount  Int      @default(0)
+  lastAttemptAt DateTime?
+  receivedAt    DateTime @default(now())
+  processedAt   DateTime?
+  errorText     String?
+  orderId       String?
+  payload       Json
+  // v2.5 additions
+  sourceIp      String?
+  headers       Json?
+}
+
+enum WebhookProvider {
+  stripe
+  tap
+}

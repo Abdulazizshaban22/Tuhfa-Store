@@ -1,0 +1,11 @@
+{
+  "name": "gs1-labels",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gen": "node gen.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}

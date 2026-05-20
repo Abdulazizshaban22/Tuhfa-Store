@@ -1,0 +1,12 @@
+// Append to prisma/schema.prisma
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  actorId   String?
+  actorName String?
+  ip        String?
+  path      String?
+  at        DateTime @default(now())
+  meta      Json?
+}

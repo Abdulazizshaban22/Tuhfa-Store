@@ -1,0 +1,37 @@
+{
+  "cli": {
+    "version": ">= 13.0.0"
+  },
+  "build": {
+    "production": {
+      "android": {
+        "image": "latest",
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "image": "latest",
+        "simulator": false
+      },
+      "env": {
+        "NODE_OPTIONS": "--max_old_space_size=4096"
+      }
+    },
+    "internal": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": false
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "REPLACE@EMAIL",
+        "ascAppId": "APP_STORE_CONNECT_APP_ID"
+      }
+    }
+  }
+}

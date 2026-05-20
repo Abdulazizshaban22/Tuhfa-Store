@@ -1,0 +1,26 @@
+{
+  "name": "tohfa-monorepo-pro",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "dev:api": "pnpm --filter api dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:ai": "pnpm --filter ai dev",
+    "dev:resolver": "pnpm --filter resolver dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "db:migrate": "pnpm --filter api prisma:migrate",
+    "db:seed": "pnpm --filter api seed"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.4",
+    "typescript": "^5.6.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.3.3",
+    "pnpm": "^9.8.0"
+  }
+}

@@ -1,0 +1,14 @@
+
+{
+  "name": "@tohfa/tools",
+  "version": "3.5.0",
+  "type": "module",
+  "dependencies": {
+    "@gltf-transform/core": "^4.2.1",
+    "@gltf-transform/extensions": "^4.2.1",
+    "@gltf-transform/functions": "^4.2.1"
+  },
+  "scripts": {
+    "xmp": "node xmp-inject.mjs input.glb output.glb --title 'Tohfa Asset' --creator 'Atelier Najd' --license 'CC-BY-4.0'"
+  }
+}

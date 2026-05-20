@@ -1,0 +1,11 @@
+--- Add import & switch to demo when DEMO_MODE ---
+import { isDemo } from '../../demo/demo.util';
+import { DemoPaymentsService } from './demo.service';
+
+constructor(private tap: TapService, private aps: ApsService, private demo: DemoPaymentsService){}
+
+async createCheckout(amountSar: number, metadata: any, method: 'mada'|'apple'|'hosted'='hosted'){
+  if (isDemo()) return this.demo.createCheckout(amountSar, metadata, method);
+  if(this.provider === 'tap'){ return this.tap.createCharge(amountSar, metadata, method); }
+  return this.aps.createPayment(amountSar, metadata);
+}

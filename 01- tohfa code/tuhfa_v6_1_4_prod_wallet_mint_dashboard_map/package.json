@@ -1,0 +1,12 @@
+{
+  "name": "tuhfa-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "web:dev": "cd apps/web && npm run dev",
+    "web:build": "cd apps/web && npm run build",
+    "web:start": "cd apps/web && npm run start"
+  }
+}

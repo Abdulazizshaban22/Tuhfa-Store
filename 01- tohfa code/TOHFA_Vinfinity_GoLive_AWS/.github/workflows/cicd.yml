@@ -1,0 +1,47 @@
+name: TOHFA CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 9 }
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - name: Build & Push images
+        run: |
+          API_REPO=${{ vars.ECR_API }}
+          WEB_REPO=${{ vars.ECR_WEB }}
+          AI_REPO=${{ vars.ECR_AI }}
+          docker build -t $API_REPO:latest ./apps/api && docker push $API_REPO:latest
+          docker build -t $WEB_REPO:latest ./apps/web && docker push $WEB_REPO:latest
+          docker build -t $AI_REPO:latest  ./apps/ai  && docker push $AI_REPO:latest
+      - name: Terraform Init/Apply
+        working-directory: infra/terraform
+        env:
+          TF_VAR_region: ${{ vars.AWS_REGION }}
+          TF_VAR_project: "tohfa"
+          TF_VAR_env: "prod"
+          TF_VAR_domain_api: ${{ vars.DOMAIN_API }}
+          TF_VAR_domain_web: ${{ vars.DOMAIN_WEB }}
+          TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
+          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
+        run: |
+          terraform init
+          terraform apply -auto-approve -var-file=env/prod.tfvars

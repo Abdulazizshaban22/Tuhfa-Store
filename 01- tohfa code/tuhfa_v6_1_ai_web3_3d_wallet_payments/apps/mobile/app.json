@@ -1,0 +1,29 @@
+
+{
+  "expo": {
+    "name": "Tuhfa",
+    "slug": "tuhfa",
+    "version": "6.1.0",
+    "scheme": "tuhfa",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "bundleIdentifier": "sa.tuhfa.app",
+      "infoPlist": {
+        "NFCReaderUsageDescription": "نستخدم NFC لربط القطع بشهادات الأصالة.",
+        "UIBackgroundModes": ["remote-notification"]
+      }
+    },
+    "android": {
+      "package": "sa.tuhfa.app",
+      "permissions": ["android.permission.NFC", "com.google.android.c2dm.permission.RECEIVE"],
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": ["expo-notifications"]
+  }
+}

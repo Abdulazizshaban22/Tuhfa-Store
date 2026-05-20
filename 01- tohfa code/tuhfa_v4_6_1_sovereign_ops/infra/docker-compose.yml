@@ -1,0 +1,35 @@
+
+version: "3.9"
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: tuhfa_postgis
+    environment:
+      - POSTGRES_DB=tuhfa
+      - POSTGRES_USER=tuhfa
+      - POSTGRES_PASSWORD=tuhfa
+    ports: ["5432:5432"]
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  cantaloupe:
+    image: uclalibrary/cantaloupe:5.0.7-0
+    container_name: tuhfa_cantaloupe
+    ports: ["8182:8182"]
+    environment:
+      - CANTALOUPE_CONFIG=/etc/cantaloupe/cantaloupe.properties
+    volumes:
+      - ./infra/cantaloupe/cantaloupe.properties:/etc/cantaloupe/cantaloupe.properties:ro
+      - ./data/images:/var/cantaloupe/images:ro
+    depends_on: [db]
+  # Optional Loris alternative:
+  # loris:
+  #   image: lorisimageserver/loris:latest
+  #   container_name: tuhfa_loris
+  #   ports: ["5004:5004"]
+  #   volumes:
+  #     - ./data/images:/usr/local/share/images:ro
+  #   environment:
+  #     - LORIS_TMPDIR=/tmp
+  #     - LORIS_IMG_ROOT=/usr/local/share/images
+volumes:
+  db_data:

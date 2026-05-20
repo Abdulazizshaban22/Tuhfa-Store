@@ -1,0 +1,45 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://tohfa.sa/iiif/manifest/exhibit/beit-alsadu",
+  "type": "Manifest",
+  "label": {
+    "ar": [
+      "بيت السدو"
+    ]
+  },
+  "summary": {
+    "ar": [
+      "معرض افتراضي — بيت السدو. صور تمهيدية لأغراض التطوير."
+    ]
+  },
+  "items": [
+    {
+      "id": "https://tohfa.sa/iiif/canvas/beit-alsadu/0",
+      "type": "Canvas",
+      "label": {
+        "ar": [
+          "صورة 1"
+        ]
+      },
+      "items": [
+        {
+          "id": "https://tohfa.sa/iiif/anno/beit-alsadu/0",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://tohfa.sa/iiif/anno/beit-alsadu/0/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://picsum.photos/1200/800",
+                "type": "Image",
+                "format": "image/jpeg"
+              },
+              "target": "https://tohfa.sa/iiif/canvas/beit-alsadu/0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

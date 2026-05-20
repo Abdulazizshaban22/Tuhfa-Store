@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  db:
+    image: ankane/pgvector:latest
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: tohfa
+    ports: ["5432:5432"]
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  ai:
+    build: ./apps/ai
+    ports: ["8079:8079"]
+    environment:
+      HF_HOME: /root/.cache/huggingface
+      TRANSFORMERS_CACHE: /root/.cache/huggingface
+  api:
+    build: ./apps/api
+    ports: ["3001:3001"]
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/tohfa
+      REDIS_URL: redis://redis:6379
+    depends_on: [db, redis, ai]
+  web:
+    build: ./apps/web
+    ports: ["3000:3000"]
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:3001
+    depends_on: [api]
+volumes:
+  db_data:

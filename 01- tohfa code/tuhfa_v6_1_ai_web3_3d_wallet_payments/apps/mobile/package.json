@@ -1,0 +1,24 @@
+
+{
+  "name": "tuhfa-mobile",
+  "private": true,
+  "version": "6.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "dependencies": {
+    "expo": "~52.0.0",
+    "react": "18.3.1",
+    "react-native": "0.76.0",
+    "expo-notifications": "~0.32.0",
+    "react-native-nfc-manager": "^3.12.1",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "@walletconnect/react-native-compat": "^2.14.0",
+    "@reown/appkit-react-native": "^1.1.0"
+  },
+  "devDependencies": { "@babel/core": "^7.26.0" }
+}

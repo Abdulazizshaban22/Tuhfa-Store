@@ -1,0 +1,19 @@
+{
+  "models": [
+    {
+      "id": "vase",
+      "title": "Traditional Vase",
+      "path": "/museum/models/vase.glb",
+      "license": "CC-BY-4.0",
+      "author": "Your Studio"
+    },
+    {
+      "id": "plate",
+      "title": "Decorated Plate",
+      "path": "/museum/models/plate.glb",
+      "license": "CC-BY-4.0",
+      "author": "Your Studio"
+    }
+  ],
+  "textures": []
+}

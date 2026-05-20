@@ -1,0 +1,1 @@
+<main style={{padding:24}}><h1>Refund Policy</h1><p>سياسة استرجاع خلال 7 أيام — نموذج افتراضي.</p></main>

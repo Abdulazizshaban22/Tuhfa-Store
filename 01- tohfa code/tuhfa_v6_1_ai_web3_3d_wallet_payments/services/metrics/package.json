@@ -1,0 +1,9 @@
+
+{
+  "name": "tuhfa-metrics",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": { "fastify": "^4.28.1", "pg": "^8.12.0" },
+  "scripts": { "start": "node server.mjs" }
+}

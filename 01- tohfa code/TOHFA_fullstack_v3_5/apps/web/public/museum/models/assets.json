@@ -1,0 +1,13 @@
+{
+  "models": [
+    {
+      "id": "vase",
+      "title": "Traditional Vase",
+      "path": "/museum/models/vase.glb",
+      "license": "CC-BY-4.0",
+      "author": "Your Studio",
+      "notes": "KHR_xmp_json_ld should be embedded using tools/xmp-inject.mjs"
+    }
+  ],
+  "textures": []
+}

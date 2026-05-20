@@ -1,0 +1,37 @@
+name: Build & Push images to ECR
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v2
+      - name: Build & push API
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/api
+          push: true
+          tags: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_API_REPO }}:latest
+      - name: Build & push WEB
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/web
+          push: true
+          tags: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_WEB_REPO }}:latest
+      - name: Build & push AI
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/ai
+          push: true
+          tags: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_AI_REPO }}:latest

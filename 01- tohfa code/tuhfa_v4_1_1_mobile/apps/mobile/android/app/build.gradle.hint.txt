@@ -1,0 +1,12 @@
+
+// app/build.gradle (placeholder; edit after `expo prebuild`)
+// apply plugin: 'com.google.gms.google-services'
+// dependencies {
+//   implementation platform('com.google.firebase:firebase-bom:33.4.0')
+//   implementation 'com.google.firebase:firebase-analytics'
+//   implementation 'com.google.firebase:firebase-messaging'
+//   // HyperPay SDK (example - add exact version from docs)
+//   // implementation 'com.oppwa.mobile:oppwa-mobile-sdk:<VERSION>'
+//   // Tap goSell (AndroidX) via jitpack:
+//   // implementation 'com.github.Tap-Payments:goSellSDK-AndroidX:<VERSION>'
+// }

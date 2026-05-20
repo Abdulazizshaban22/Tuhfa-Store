@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2021",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"]
+}

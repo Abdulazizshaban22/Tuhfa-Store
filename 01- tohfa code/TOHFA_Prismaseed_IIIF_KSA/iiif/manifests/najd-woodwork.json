@@ -1,0 +1,93 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://iiif.tohfa.sa/manifests/najd-woodwork",
+  "type": "Manifest",
+  "label": {
+    "ar": [
+      "نجد — الخشبيات والأبواب التقليدية"
+    ],
+    "en": [
+      "Najd — Traditional Woodwork"
+    ]
+  },
+  "summary": {
+    "ar": [
+      "الأبواب والصناديق المنقوشة وأساليب الحفر النجدي."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "ar": [
+          "الموقع"
+        ]
+      },
+      "value": {
+        "ar": [
+          "الرياض/نجد، السعودية"
+        ]
+      }
+    },
+    {
+      "label": {
+        "ar": [
+          "الترخيص"
+        ]
+      },
+      "value": {
+        "ar": [
+          "CC BY 4.0 (مثال)"
+        ]
+      }
+    }
+  ],
+  "rights": "http://creativecommons.org/licenses/by/4.0/",
+  "thumbnail": [
+    {
+      "id": "https://iiif.tohfa.sa/images/najd-woodwork/full/max/0/default.jpg",
+      "type": "Image",
+      "format": "image/jpeg"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://iiif.tohfa.sa/manifests/najd-woodwork/canvas/1",
+      "type": "Canvas",
+      "height": 3000,
+      "width": 3000,
+      "label": {
+        "ar": [
+          "لوحة 1"
+        ]
+      },
+      "items": [
+        {
+          "id": "https://iiif.tohfa.sa/manifests/najd-woodwork/canvas/1/page/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://iiif.tohfa.sa/manifests/najd-woodwork/canvas/1/page/1/annotation/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://iiif.tohfa.sa/images/najd-woodwork/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "height": 3000,
+                "width": 3000,
+                "service": [
+                  {
+                    "id": "https://iiif.tohfa.sa/images/najd-woodwork",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              },
+              "target": "https://iiif.tohfa.sa/manifests/najd-woodwork/canvas/1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

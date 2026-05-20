@@ -1,0 +1,11 @@
+{
+  "name": "tohfa-fullstack",
+  "private": true,
+  "version": "3.0.0",
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "apps/mobile"
+  ],
+  "engines": { "node": ">=18.17" }
+}

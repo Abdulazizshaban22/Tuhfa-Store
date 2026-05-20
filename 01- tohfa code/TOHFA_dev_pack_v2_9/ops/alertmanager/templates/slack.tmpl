@@ -1,0 +1,14 @@
+# ops/alertmanager/templates/slack.tmpl
+{{ define "slack.title" -}}
+[{{ .Status | toUpper }}] {{ .CommonLabels.alertname }} — {{ .CommonLabels.severity }}
+{{- end }}
+{{ define "slack.text" -}}
+*Alert:* {{ .CommonLabels.alertname }}
+*Status:* {{ .Status }}
+*Severity:* {{ .CommonLabels.severity }}
+*StartsAt:* {{ (index .Alerts 0).StartsAt }}
+*Summary:* {{ (index .Alerts 0).Annotations.summary }}
+*Description:* {{ (index .Alerts 0).Annotations.description }}
+
+*Runbook:* {{ (index .Alerts 0).Annotations.runbook_url }}
+{{- end }}

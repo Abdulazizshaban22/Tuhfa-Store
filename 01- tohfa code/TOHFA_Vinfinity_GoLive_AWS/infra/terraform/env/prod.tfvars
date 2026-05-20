@@ -1,0 +1,14 @@
+region       = "me-central-1"
+project      = "tohfa"
+env          = "prod"
+domain_api   = "api.tohfa.sa"
+domain_web   = "tohfa.sa"
+db_username  = "tohfa"
+db_password  = "REPLACE_ME_STRONG_PASSWORD"
+db_instance_class = "db.r6g.large"
+container_cpu    = 1024
+container_memory = 2048
+desired_count_api = 6
+desired_count_web = 6
+desired_count_ai  = 4
+enable_cloudfront = true

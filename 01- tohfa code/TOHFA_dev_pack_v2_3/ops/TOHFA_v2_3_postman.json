@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "TOHFA v2.3 — API & Webhooks",
+    "_postman_id": "tohfa-v23",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Arabic/English requests covering Auth, Products, Orders, Webhooks."
+  },
+  "item": [
+    {
+      "name": "Auth — Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_BASE}}/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"test@tohfa.local\",\"password\":\"P@ssw0rd!\",\"name\":\"Tester\",\"role\":\"customer\"}"
+        }
+      }
+    },
+    {
+      "name": "Auth — Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_BASE}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"test@tohfa.local\",\"password\":\"P@ssw0rd!\"}"
+        }
+      }
+    },
+    {
+      "name": "Products — Ensure Embedding",
+      "request": {
+        "method": "GET",
+        "url": "{{API_BASE}}/products/{{PRODUCT_ID}}/embed"
+      }
+    },
+    {
+      "name": "Products — Similar",
+      "request": {
+        "method": "GET",
+        "url": "{{API_BASE}}/products/{{PRODUCT_ID}}/similar?limit=6"
+      }
+    },
+    {
+      "name": "Orders — Create (Stripe)",
+      "request": {
+        "method": "POST",
+        "url": "{{API_BASE}}/orders",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{JWT}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"items\":[{\"productId\":\"{{PRODUCT_ID}}\",\"quantity\":1}],\"provider\":\"stripe\",\"returnUrl\":\"{{WEB_BASE}}/thank-you\"}"
+        }
+      }
+    },
+    {
+      "name": "Orders — Create (Tap STC Pay)",
+      "request": {
+        "method": "POST",
+        "url": "{{API_BASE}}/orders",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{JWT}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"items\":[{\"productId\":\"{{PRODUCT_ID}}\",\"quantity\":1}],\"provider\":\"tap\",\"returnUrl\":\"{{WEB_BASE}}/thank-you\"}"
+        }
+      }
+    },
+    {
+      "name": "Webhooks — Stripe (test)",
+      "request": {
+        "method": "POST",
+        "url": "{{API_BASE}}/webhooks/stripe",
+        "header": [
+          {
+            "key": "Stripe-Signature",
+            "value": "<from stripe cli>"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<raw json event>"
+        }
+      }
+    },
+    {
+      "name": "Webhooks — Tap Secure (test)",
+      "request": {
+        "method": "POST",
+        "url": "{{API_BASE}}/webhooks/tap-secure",
+        "header": [
+          {
+            "key": "tap-signature",
+            "value": "<computed hmac>"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<raw json event>"
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "API_BASE",
+      "value": "http://localhost:3001"
+    },
+    {
+      "key": "WEB_BASE",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "PRODUCT_ID",
+      "value": "REPLACE"
+    },
+    {
+      "key": "JWT",
+      "value": ""
+    }
+  ]
+}

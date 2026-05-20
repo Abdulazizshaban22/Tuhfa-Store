@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "id": "https://tuhfa.app/iiif/sample-manifest.json",
+  "type": "Manifest",
+  "label": {
+    "ar": [
+      "مقتنى تراثي — صورة عالية الدقة"
+    ]
+  },
+  "items": [
+    {
+      "id": "https://tuhfa.app/iiif/canvas/1",
+      "type": "Canvas",
+      "width": 4000,
+      "height": 3000,
+      "items": [
+        {
+          "id": "https://tuhfa.app/iiif/page/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://tuhfa.app/iiif/annotation/painting/1",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://images.example.org/iiif/2/asset1/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://images.example.org/iiif/2/asset1",
+                    "type": "ImageService2",
+                    "profile": "http://iiif.io/api/image/2/level2.json"
+                  }
+                ]
+              },
+              "target": "https://tuhfa.app/iiif/canvas/1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

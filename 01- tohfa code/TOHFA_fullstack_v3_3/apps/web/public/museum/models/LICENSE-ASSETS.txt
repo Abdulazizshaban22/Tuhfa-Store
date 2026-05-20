@@ -1,0 +1,3 @@
+Place your 3D assets (GLB/GLTF) here.
+Recommended license: CC-BY-4.0 (or commercial license owned by you).
+Each asset entry should list: id, title, path, author, license, source.

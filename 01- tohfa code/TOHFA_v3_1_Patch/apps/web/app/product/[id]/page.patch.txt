@@ -1,0 +1,8 @@
+In your existing product page, import and render:
+-------------------------------------------------
+import OwnerCheck from './OwnerCheck'
+
+const base = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:4000'
+<OwnerCheck externalId={params.id} apiBase={base} />
+-------------------------------------------------
+Place near the bottom of the page to show ownership section.

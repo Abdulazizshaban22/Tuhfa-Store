@@ -1,0 +1,45 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://tohfa.sa/iiif/manifest/exhibit/jeddah-historic",
+  "type": "Manifest",
+  "label": {
+    "ar": [
+      "جدة التاريخية"
+    ]
+  },
+  "summary": {
+    "ar": [
+      "معرض افتراضي — جدة التاريخية. صور تمهيدية لأغراض التطوير."
+    ]
+  },
+  "items": [
+    {
+      "id": "https://tohfa.sa/iiif/canvas/jeddah-historic/0",
+      "type": "Canvas",
+      "label": {
+        "ar": [
+          "صورة 1"
+        ]
+      },
+      "items": [
+        {
+          "id": "https://tohfa.sa/iiif/anno/jeddah-historic/0",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://tohfa.sa/iiif/anno/jeddah-historic/0/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://picsum.photos/1200/800",
+                "type": "Image",
+                "format": "image/jpeg"
+              },
+              "target": "https://tohfa.sa/iiif/canvas/jeddah-historic/0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
